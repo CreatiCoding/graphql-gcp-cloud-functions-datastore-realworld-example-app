@@ -1,30 +1,15 @@
-const https = require("firebase-functions").https;
-const express = require("express");
-const ApolloServer = require("apollo-server-express").ApolloServer;
-const schema = require("./schema").schema;
-const resolvers = require("./resolvers").resolvers;
+const functions = require("firebase-functions");
+const newExpress = require("express");
+const newHttps = require("./src/modules/https");
+const newGraphQLServer = require("./src/graphql_server");
 
-const server = new ApolloServer({
-  typeDefs: [...Object.values(schema)],
-  resolvers: {
-    Query: {
-      ...resolvers,
-    },
-  },
-});
+const server = newGraphQLServer();
+const app = newExpress();
 
-const app = express();
 server.applyMiddleware({ app });
-// https://github.com/arjunyel/firestore-apollo-graphql
-// /api/graphql?query={books{title%20author}}
 
-exports.api = https.onRequest(app);
-exports.helloWorld = https.onRequest((request, response) => {
-  request;
-  response.send("Hello from Firebase!");
-});
-// export const api = https.onRequest(app);
-// export const helloWorld = https.onRequest((request, response) => {
-//   request;
-//   response.send("Hello from Firebase!");
-// });
+// https://github.com/arjunyel/firestore-apollo-graphql
+// http://localhost:5001/graphql-fd-realword/us-central1/api/graphql?query={posts{title%20author}}
+
+const https_modules = newHttps({ functions, exports });
+https_modules.run({ app });
