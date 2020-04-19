@@ -59,3 +59,7 @@ For more information on how to this works with other frontends/backends, head ov
 > 3. and just push enter key 5 times!
 
 ### 3. just go functions directory and enjoy!
+
+## DEMO
+
+go to https://us-central1-graphql-fd-realword.cloudfunctions.net/api/graphql?query=%7Bposts%7Btitle%20author%7D%7D
