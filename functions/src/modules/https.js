@@ -8,6 +8,7 @@ module.exports = function ({ functions, exports }) {
       });
 
       // http://localhost:5001/graphql-fd-realword/us-central1/api/graphql?query={posts{title%20post_id}}
+      // https://us-central1-graphql-fd-realword.cloudfunctions.net/api/graphql?query=%7Bposts%7Btitle%20post_id%7D%7D
       controller.api = functions.https.onRequest(app);
 
       console.log("https load completed");
