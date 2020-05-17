@@ -42,7 +42,7 @@ module.exports = () => {
   };
 
   self.findDocuments = async ({ collection, page_no = 0, page_size = 10 }) => {
-    if (!collection || !id) return {};
+    if (!collection) return {};
     if (self.store_cache.has(`${collection}`)) {
       return self.store_cache.get(`${collection}`);
     } else {
