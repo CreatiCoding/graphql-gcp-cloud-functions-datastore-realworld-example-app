@@ -6,5 +6,6 @@ module.exports = gql`
   # case, the "books" query returns an array of zero or more Books (defined above).
   type Query {
     posts: [Post]
+    post: Post
   }
 `;

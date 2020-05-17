@@ -15,7 +15,8 @@ module.exports = () => {
   const firestore = admin.firestore();
 
   self.findDocumentById = async ({ collection, id }) => {
-    return (await firestore.collection(collection).doc(id).get()).data();
+    if (!id) return {};
+    return (await firestore.collection(collection).doc(`${id}`).get()).data();
   };
 
   self.findDocuments = async ({ collection, page_no = 0, page_size = 10 }) => {
