@@ -1,4 +1,3 @@
-const responseCachePlugin = require("apollo-server-plugin-response-cache");
 const ASE = require("apollo-server-express");
 const ApolloServer = ASE.ApolloServer;
 
@@ -16,7 +15,6 @@ module.exports = function () {
     cacheControl: {
       defaultMaxAge: 5,
     },
-    // plugins: [responseCachePlugin()],
   });
   return server;
 };
