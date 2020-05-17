@@ -7,5 +7,7 @@ module.exports = gql`
   type Query {
     posts: [Post]
     post(post_id: ID!): Post
+    createPost(post_id: ID!, title: String, contents: String): Post
+    updatePost(post_id: ID!, title: String, contents: String): Post
   }
 `;
