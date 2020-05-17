@@ -62,4 +62,4 @@ For more information on how to this works with other frontends/backends, head ov
 
 ## DEMO
 
-go to https://us-central1-graphql-fd-realword.cloudfunctions.net/api/graphql?query=%7Bposts%7Btitle%20author%7D%7D
+go to https://us-central1-graphql-fd-realword.cloudfunctions.net/api/graphql?query=%7Bposts%7Btitle%20post_id%7D%7D
