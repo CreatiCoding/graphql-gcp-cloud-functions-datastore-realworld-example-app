@@ -5,10 +5,11 @@ exports.Query = {
     const result = await store.findDocuments({ collection: "posts" });
     return result;
   },
-  post: () => {
+  post: (parent, args, context, info) => {
+    const { post_id } = args;
     return store.findDocumentById({
       collection: "posts",
-      id: "1",
+      id: post_id,
     });
   },
 };
