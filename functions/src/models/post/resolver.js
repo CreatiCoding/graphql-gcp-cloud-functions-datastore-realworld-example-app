@@ -1,13 +1,8 @@
-const posts = [
-  {
-    title: "Harry Potter and the Chamber of Secrets",
-    author: "J.K. Rowling",
-  },
-  {
-    title: "Jurassic Park",
-    author: "Michael Crichton",
-  },
-];
+const newStore = require("./../../resolvers/store");
+const store = newStore();
 exports.Query = {
-  posts: () => posts,
+  posts: async () => {
+    const result = await store.findDocuments({ collection: "posts" });
+    return result;
+  },
 };

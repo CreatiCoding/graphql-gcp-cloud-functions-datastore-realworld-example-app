@@ -5,7 +5,8 @@ module.exports = gql`
 
   # This "Book" type defines the queryable fields for every book in our data source.
   type Post {
+    post_id: Int
     title: String
-    author: String
+    contents: String
   }
 `;
