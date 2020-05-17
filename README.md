@@ -64,6 +64,14 @@ For more information on how to this works with other frontends/backends, head ov
 
 go to
 
-https://us-central1-graphql-fd-realword.cloudfunctions.net/api/graphql?query=%7Bpost%7Btitle%20post_id%7D%7D
+post
+https://us-central1-graphql-fd-realword.cloudfunctions.net/api/graphql?query={post(post_id: "3"){title post_id}}
 
-https://us-central1-graphql-fd-realword.cloudfunctions.net/api/graphql?query=%7Bposts%7Btitle%20post_id%7D%7D
+posts
+https://us-central1-graphql-fd-realword.cloudfunctions.net/api/graphql?query={posts{post_id title contents}}
+
+createPost
+https://us-central1-graphql-fd-realword.cloudfunctions.net/api/graphql?query={createPost(post_id: "5", title: "제목5", contents: "내용5") {post_id title contents}}
+
+updatePost
+https://us-central1-graphql-fd-realword.cloudfunctions.net/api/graphql?query={updatePost(post_id: "5", title: "제목5", contents: "내용5") {post_id title contents}}
