@@ -76,12 +76,12 @@ http://localhost:5001/graphql-fd-realword/us-central1/api/graphql?query={getList
 
 createPost
 
-https://us-central1-graphql-fd-realword.cloudfunctions.net/api/graphql?query={createOne(type:"posts",id:"1",payload:"{\\"post_id\\":\\"5\\",\\"title\\":\\"제목5\\",\\"contents\\":\\"내용5\\"}")}
+https://us-central1-graphql-fd-realword.cloudfunctions.net/api/graphql?query={createOne(type:"posts",id:"1",payload:"{\"post_id\":\"5\",\"title\":\"제목5\",\"contents\":\"내용5\"}")}
 
-http://localhost:5001/graphql-fd-realword/us-central1/api/graphql?query={createOne(type:"posts",id:"1",payload:"{\\"post_id\\":\\"5\\",\\"title\\":\\"제목5\\",\\"contents\\":\\"내용5\\"}")}
+http://localhost:5001/graphql-fd-realword/us-central1/api/graphql?query={createOne(type:"posts",id:"1",payload:"{\"post_id\":\"5\",\"title\":\"제목5\",\"contents\":\"내용5\"}")}
 
 updatePost
 
-https://us-central1-graphql-fd-realword.cloudfunctions.net/api/graphql?query={updateOne(type:"posts",id:"5",payload:"{\\"post_id\\":\\"5\\",\\"title\\":\\"제목55555\\",\\"contents\\":\\"내용55555\\"}")}
+https://us-central1-graphql-fd-realword.cloudfunctions.net/api/graphql?query={updateOne(type:"posts",id:"5",payload:"{\"post_id\":\"5\",\"title\":\"제목55555\",\"contents\":\"내용55555\"}")}
 
-http://localhost:5001/graphql-fd-realword/us-central1/api/graphql?query={updateOne(type:"posts",id:"5",payload:"{\\"post_id\\":\\"5\\",\\"title\\":\\"제목55555\\",\\"contents\\":\\"내용55555\\"}")}
+http://localhost:5001/graphql-fd-realword/us-central1/api/graphql?query={updateOne(type:"posts",id:"5",payload:"{\"post_id\":\"5\",\"title\":\"제목55555\",\"contents\":\"내용55555\"}")}
