@@ -1,3 +1,5 @@
+# GraphQL을 활용한 동적 스키마 firestore 백엔드
+
 # graphql-gcp-cloud-functions-datastore-realworld-example-app
 
 GraphQL + Serverless GCP Cloud Functions + Datastore implementation of RealWorld Backend https://realworld.io
