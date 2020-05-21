@@ -5,28 +5,22 @@ const LRU = require("lru-cache");
 const newHttps = require("./src/modules/https");
 const newTriggers = require("./src/modules/triggers");
 const newGraphQLServer = require("./src/graphql_server");
-const newStore = require("./src/resolvers/store");
+const newStore = require("./src/store");
 
-let store_cache = null;
+const store_cache = new LRU({
+  max: 1024,
+  length: (n, key) => n * 2 + key.length,
+  dispose: (key, value) => {},
+  maxAge: 1000 * 60 * 60 * 24 * 365,
+});
+
 if (process.env.GOOGLE_APPLICATION_CREDENTIALS) {
   const credential = admin.credential.cert(
     require(process.env.GOOGLE_APPLICATION_CREDENTIALS)
   );
   admin.initializeApp(credential);
-  store_cache = new LRU({
-    max: 1024,
-    length: (n, key) => n * 2 + key.length,
-    dispose: (key, value) => {},
-    maxAge: 1000 * 60 * 60 * 24 * 365,
-  });
 } else {
   admin.initializeApp(functions.config().firebase);
-  store_cache = new LRU({
-    max: 1024,
-    length: (n, key) => n * 2 + key.length,
-    dispose: (key, value) => {},
-    maxAge: 1000 * 60 * 60 * 24 * 365,
-  });
 }
 
 const app = newExpress();

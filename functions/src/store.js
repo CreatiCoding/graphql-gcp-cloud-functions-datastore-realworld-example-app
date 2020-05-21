@@ -23,7 +23,7 @@ module.exports = ({ firestore, store_cache }) => {
       const snapshot = await firestore.collection(collection).get({
         source: "cache",
       });
-      const data = snapshot.docs.map((doc) => doc.data());
+      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       store_cache.set(`${collection}`, data);
       return data;
     }
@@ -39,7 +39,8 @@ module.exports = ({ firestore, store_cache }) => {
       .set({
         ...payload,
       });
-    return { ...payload };
+    store_cache.del(`${collection}`);
+    return payload;
   };
 
   self.updateDocument = async ({ collection, id, payload = {} }) => {
@@ -52,6 +53,8 @@ module.exports = ({ firestore, store_cache }) => {
       .update({
         ...payload,
       });
+    store_cache.del(`${collection}`);
+    store_cache.del(`${collection}-${id}`);
     return { id, ...payload };
   };
   return self;

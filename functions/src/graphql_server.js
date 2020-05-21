@@ -1,7 +1,8 @@
 const ASE = require("apollo-server-express");
+const GraphQLJSON = require("graphql-type-json").GraphQLJSON;
 const ApolloServer = ASE.ApolloServer;
-const newResolver = require("./resolvers");
 const schema = require("./schema");
+const newResolver = require("./resolver");
 
 module.exports = function ({ store }) {
   const resolver = newResolver({ store });
@@ -10,7 +11,12 @@ module.exports = function ({ store }) {
     typeDefs: [...Object.values(schema)],
     resolvers: {
       Query: {
-        ...resolver.getQuery(),
+        ...resolver,
+      },
+      JSON: {
+        __serialize(value) {
+          return GraphQLJSON.parseValue(value);
+        },
       },
     },
     cacheControl: {
